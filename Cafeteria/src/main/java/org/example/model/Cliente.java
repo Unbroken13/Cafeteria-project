@@ -9,5 +9,15 @@ public class Cliente extends Persona{
         this.idCliente = idCliente;
     }
 
+    //getters
 
+    public String getIdCliente() {
+        return idCliente;
+    }
+
+    //setters
+
+    public void setIdCliente(String idCliente) {
+        this.idCliente = idCliente;
+    }
 }
