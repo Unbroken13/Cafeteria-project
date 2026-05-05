@@ -30,4 +30,14 @@ public class Bebida extends Producto{
     public void setEsCaliente(boolean esCaliente) {
         this.esCaliente = esCaliente;
     }
+
+
+    @Override
+    public String toString() {
+        return  super.toString() +
+                "Bebida{" +
+                "tamanio=" + tamanio +
+                ", esCaliente=" + esCaliente +
+                '}';
+    }
 }

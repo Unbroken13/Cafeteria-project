@@ -38,4 +38,14 @@ public class Comida extends Producto{
     public void setEsAptaVegano(boolean esAptaVegano) {
         this.esAptaVegano = esAptaVegano;
     }
+
+    @Override
+    public String toString() {
+        String celiaco = esAptaCeliaco ? "[Sin TACC]" : "[Con Gluten]";
+        String vegetariano = esAptaVegetariano ? "[Vegetariano]" : "[No apto Vegetariano]";
+        String vegano = esAptaVegano ? "[Vegano]" : "[No apto vegano]";
+
+        return super.toString() + " | " +
+                celiaco + " " + vegetariano + vegano;
+    }
 }
