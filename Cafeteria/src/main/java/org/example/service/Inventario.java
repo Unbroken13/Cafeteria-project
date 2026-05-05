@@ -7,11 +7,25 @@ import java.util.List;
 
 public class Inventario {
 
+    private static Inventario instancia;
+
     private List<Producto> productos;
 
-    public Inventario(){
+    private Inventario(){
         this.productos = new ArrayList<>();
     }
+
+    //métodos
+
+    public static Inventario getInstancia(){
+        //si no existe una instancia de Inventario, entonces la inicializamos.
+        if (instancia == null){
+            instancia = new Inventario();
+        }
+        //si existe una instancia previa de Inventario, solamente la devolvemos.
+        return instancia;
+    }
+
 
     public void agregarProducto(Producto product){
         this.productos.add(product);
