@@ -1,5 +1,7 @@
 package org.example.model;
 
+import org.example.service.IPedidoService;
+
 import java.util.ArrayList;
 import java.util.List;
 
