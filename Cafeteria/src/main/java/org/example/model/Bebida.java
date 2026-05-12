@@ -34,10 +34,8 @@ public class Bebida extends Producto{
 
     @Override
     public String toString() {
-        return  super.toString() +
-                "Bebida{" +
-                "tamanio=" + tamanio +
-                ", esCaliente=" + esCaliente +
-                '}';
+        String caliente = esCaliente ? "Caliente" : "Fría";
+        return  super.toString() + String.format(" | Tamaño: %-7s | %s", tamanio, caliente);
+
     }
 }

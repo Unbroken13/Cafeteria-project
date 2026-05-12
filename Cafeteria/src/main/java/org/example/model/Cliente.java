@@ -23,4 +23,13 @@ public class Cliente extends Persona{
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
+
+
+
+    @Override
+    public String toString() {
+        return String.format("CLIENTE ID: %-4d | %s",
+                idCliente, super.toString());
+    }
+
 }
