@@ -50,10 +50,45 @@ public class Pedido {
     }
 
     public String getNombreCliente() {
-        return cliente.getnombre();
+        return cliente.getNombre();
     }
 
     public List<DetallePedido> getDetallesDeLosPedidos() {
         return detallesDeLosPedidos;
     }
+
+    @Override
+    public String toString() {
+        String ticket = "\n==========================================\n";
+        ticket += "           CAFETERÍA TALENTO TECH         \n";
+        ticket += "==========================================\n";
+
+
+        ticket += String.format("Ticket N°: %04d \n", idPedido);
+        ticket += "Cliente: " + cliente.getNombre() + " (DNI: " + cliente.getDni() + ")\n";
+        ticket += "------------------------------------------\n";
+
+        ticket += String.format("%-25s %-5s %-10s\n", "Producto", "Cant", "Subtotal");
+
+
+        for (DetallePedido detalle : detallesDeLosPedidos) {
+            String nombreProd = detalle.getProducto().getNombre();
+            int cant = detalle.getCantidad();
+            double subtotal = detalle.getProducto().getPrecio() * cant;
+
+            // Vamos sumando cada línea al ticket existente
+            ticket += String.format("%-25s x%-4d $%-9.2f\n",
+                    nombreProd, cant, subtotal);
+        }
+
+        ticket += "------------------------------------------\n";
+        ticket += String.format("TOTAL A PAGAR:               $%-9.2f\n", calcularTotal());
+        ticket += "==========================================\n";
+        ticket += "       ¡Gracias por su compra!            \n";
+
+        return ticket;
+    }
+
+
+
 }

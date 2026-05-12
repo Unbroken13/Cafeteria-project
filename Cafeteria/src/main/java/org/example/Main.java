@@ -99,7 +99,7 @@ public class Main {
 
                             System.out.println("Productos: ");
                             for (DetallePedido detalles: p.getDetallesDeLosPedidos()){
-                                System.out.printf("  -" + detalles.getProducto().getNombre() +
+                                System.out.println("  -" + detalles.getProducto().getNombre() +
                                         " (x" + detalles.getCantidad() + ") $" + (detalles.getProducto().getPrecio() * detalles.getCantidad())  );
                             }
 

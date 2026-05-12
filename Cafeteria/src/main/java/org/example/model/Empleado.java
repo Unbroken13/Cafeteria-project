@@ -2,6 +2,9 @@ package org.example.model;
 
 public  class Empleado extends Persona{
 
+    //clase sin implementación. Unicamente está para proyectar en un futuro, roles que se le pueden
+    //dar a los empledos.
+
     private String idEmpleado;
     private int antiguedad;
     private PuestoTrabajo puestoTrabajo;
@@ -38,4 +41,12 @@ public  class Empleado extends Persona{
     public void setAntiguedad(int antiguedad) {
         this.antiguedad = antiguedad;
     }
+
+    @Override
+    public String toString() {
+        return String.format("EMPLEADO | %s | Puesto: %-10s",
+                super.toString(), puestoTrabajo);
+    }
+
+
 }

@@ -50,11 +50,7 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Producto{" +
-                "nombre='" + nombre + '\'' +
-                ", id=" + id +
-                ", stock=" + stock +
-                ", precio=" + precio +
-                '}';
+        return String.format("ID: %-3d | %-25s | Precio: $%8.2f | Stock: %5d",
+                id, nombre, precio, stock);
     }
 }
