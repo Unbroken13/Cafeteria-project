@@ -2,22 +2,25 @@ package org.example.model;
 
 public class Cliente extends Persona{
 
-    private String idCliente;
+    private int idCliente;
 
-    public Cliente(String dni, String celular, String mail, String idCliente){
+    private static int contadorIdCliente;
+
+    public Cliente(String dni, String celular, String mail){
         super(dni, celular,mail);
-        this.idCliente = idCliente;
+        this.idCliente = ++Cliente.contadorIdCliente;
     }
+
 
     //getters
 
-    public String getIdCliente() {
+    public int getIdCliente() {
         return idCliente;
     }
 
     //setters
 
-    public void setIdCliente(String idCliente) {
+    public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
 }

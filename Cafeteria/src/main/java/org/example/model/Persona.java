@@ -3,14 +3,16 @@ package org.example.model;
 public abstract class Persona {
 
     private String dni;
-    private String celular;
+    private String nombre;
     private String mail;
 
-    public Persona(String dni, String celular, String mail){
+    public Persona(String dni, String nombre, String mail){
         this.dni = dni;
-        this.celular = celular;
+        this.nombre = nombre;
         this.mail = mail;
     }
+
+    public Persona(){};
 
     //getter
 
@@ -18,8 +20,8 @@ public abstract class Persona {
         return dni;
     }
 
-    public String getCelular() {
-        return celular;
+    public String getnombre() {
+        return nombre;
     }
 
     public String getMail() {
@@ -37,7 +39,7 @@ public abstract class Persona {
         this.mail = mail;
     }
 
-    public void setCelular(String celular) {
-        this.celular = celular;
+    public void setnombre(String celular) {
+        this.nombre = celular;
     }
 }
