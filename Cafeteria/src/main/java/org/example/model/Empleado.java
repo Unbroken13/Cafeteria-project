@@ -11,6 +11,31 @@ public  class Empleado extends Persona{
         this.idEmpleado = idEmpleado;
     }
 
+    //getters
 
+    public String getIdEmpleado() {
+        return idEmpleado;
+    }
 
+    public PuestoTrabajo getPuestoTrabajo() {
+        return puestoTrabajo;
+    }
+
+    public int getAntiguedad() {
+        return antiguedad;
+    }
+
+    //setters
+
+    public void setIdEmpleado(String idEmpleado) {
+        this.idEmpleado = idEmpleado;
+    }
+
+    public void setPuestoTrabajo(PuestoTrabajo puestoTrabajo) {
+        this.puestoTrabajo = puestoTrabajo;
+    }
+
+    public void setAntiguedad(int antiguedad) {
+        this.antiguedad = antiguedad;
+    }
 }
