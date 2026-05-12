@@ -45,4 +45,15 @@ public class Pedido {
     }
 
 
+    public int getIdPedido() {
+        return idPedido;
+    }
+
+    public String getNombreCliente() {
+        return cliente.getnombre();
+    }
+
+    public List<DetallePedido> getDetallesDeLosPedidos() {
+        return detallesDeLosPedidos;
+    }
 }

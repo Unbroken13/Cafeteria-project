@@ -3,12 +3,17 @@ package org.example.service;
 import org.example.model.Cliente;
 import org.example.model.Pedido;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PedidoServiceImpl implements IPedidoService{
 
     private static PedidoServiceImpl instancia;
     private List<Pedido> historialPedidos; // "Base de Datos" de ventas
+
+    private PedidoServiceImpl() {
+        this.historialPedidos = new ArrayList<>(); // <--- ¡AQUÍ VA!
+    }
 
     public static PedidoServiceImpl getInstancia() {
         if (instancia == null) {
@@ -41,6 +46,8 @@ public class PedidoServiceImpl implements IPedidoService{
         }
         return total;
     }
+
+
 }
 
 
