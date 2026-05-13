@@ -1,9 +1,10 @@
 ☕ Gourmet Coffee Shop - Console System
-Sistema de gestión para cafeterías de especialidad y pastelería gourmet.
+Sistema de gestión integral para cafeterías de especialidad y pastelería gourmet.
 
 🇪🇸 Versión en Español
+
 📝 Descripción
-Este proyecto es una aplicación de consola desarrollada en Java diseñada para gestionar las operaciones diarias de una cafetería gourmet. Permite la administración de inventario, gestión de pedidos personalizados y control de personal, aplicando principios de Programación Orientada a Objetos (POO) y arquitectura limpia.
+Este proyecto es una aplicación de consola desarrollada en Java, diseñada para digitalizar las operaciones de una cafetería. El sistema no solo gestiona el inventario y los pedidos, sino que aplica una arquitectura orientada a la extensibilidad y la seguridad de los datos, utilizando principios avanzados de Programación Orientada a Objetos (POO) y Clean Architecture y Patrones de diseño (Por el momento unicamente se aplica Singleton, pero se proyecta agregar mas patrones para generar eficiencia en el programa).
 
 🛠️ Stack Tecnológico
 Lenguaje: Java 17+
@@ -12,33 +13,43 @@ Gestor de Dependencias: Maven
 
 Control de Versiones: Git & GitHub
 
-Gestión de Proyectos: GitHub Projects (Kanban)
+Gestión de Proyectos: GitHub Projects (Tablero Kanban)
 
 🚀 Metodología de Trabajo (Workflow)
-Para este proyecto se aplica un flujo de trabajo profesional:
+Se aplica un flujo de trabajo profesional para simular un entorno de desarrollo real:
 
-Gestión de Tareas: Uso de un tablero Kanban en GitHub Projects.
+Gestión de Tareas: Uso de un tablero Kanban para el seguimiento de funcionalidades.
 
-Estrategia de Ramas: Feature Branching.
+Estrategia de Ramas: Feature Branching (uso de ramas main, develop y feature/).
 
-main: Rama estable para producción.
+Identidad de Desarrollo: Configuración de autores diferenciada para simular entornos de trabajo colaborativo (Dev notebook y Dev escritorio).
 
-develop: Rama de integración para desarrollo.
+📋 Características Implementadas
+Arquitectura de Capas: Separación estricta entre modelos, lógica de negocio e interfaz.
 
-feature/nombre-tarea: Ramas temporales para nuevas funcionalidades.
+Patrones de Diseño: Implementación de Singleton para la gestión de servicios y Estrategias de validación.
 
-Convención de Commits: Conventional Commits (feat:, fix:, chore:, docs:, refactor:).
+Gestión de Excepciones: Robustez mediante excepciones personalizadas (StockInsuficienteException, ProductoNoEncontradoException) para el control de errores de negocio.
 
-📋 Estructura del Proyecto
-src/main/java/model: Clases de entidad (Producto, Bebida, Comida, etc.).
+Salida Profesional: Generación de Tickets de Venta detallados y alineación de tablas en consola mediante formateo avanzado de Strings.
 
-src/main/java/service: Lógica de negocio (Gestor de pedidos, inventario).
+📂 Estructura del Proyecto
+src/main/java/org.example.model: Clases de entidad con jerarquía de herencia (clase base Producto y Persona con sus respectivas subclases especializadas).
 
-src/main/java/ui: Interfaz de usuario por consola.
+src/main/java/org.example.service: Lógica de negocio organizada mediante el principio de inversión de dependencias:
+
+Interfaces (IPedidoService, IProductoService): Definen los contratos y métodos que el sistema debe cumplir.
+
+Implementaciones (PedidoServiceImpl, ProductoServiceImpl): Clases que ejecutan la lógica real. Aplican el Patrón Singleton para garantizar una única instancia de los datos en memoria durante la ejecución.
+
+src/main/java/org.example.exception: Clases de excepciones personalizadas para el control de errores de negocio (Stock, IDs inexistentes).
+
+src/main/java/org.example.Main: Interfaz de usuario interactiva por consola que gestiona el flujo de entrada/salida y la captura de excepciones.
 
 🇺🇸 English Version
+
 📝 Description
-This project is a Java console application designed to manage the daily operations of a gourmet coffee shop. It enables inventory management, personalized order handling, and staff control, applying Object-Oriented Programming (OOP) principles and clean architecture.
+This Java-based console application manages daily coffee shop operations. It features advanced inventory tracking, personalized order processing, and error handling, applying OOP principles and Clean Architecture for high maintainability.
 
 🛠️ Tech Stack
 Language: Java 17+
@@ -49,24 +60,16 @@ Version Control: Git & GitHub
 
 Project Management: GitHub Projects (Kanban)
 
-🚀 Workflow Methodology
-A professional workflow is applied to this project:
-
+🚀 Workflow
 Task Management: GitHub Projects Kanban board.
 
-Branching Strategy: Feature Branching.
+Branching Strategy: Feature Branching (branches: main, develop, feature/).
 
-main: Stable production branch.
+Commit Convention: Conventional Commits for clear version history.
 
-develop: Integration branch for development.
+📋 Key Features
+Singleton Pattern: Ensures consistent state management across the application services.
 
-feature/task-name: Temporary branches for new features.
+Custom Exception Handling: Prevents invalid business states, such as negative stock or missing products.
 
-Commit Convention: Conventional Commits (feat:, fix:, chore:, docs:, refactor:).
-
-📋 Project Structure
-src/main/java/model: Entity classes (Product, Drink, Food, etc.).
-
-src/main/java/service: Business logic (Order manager, inventory).
-
-src/main/java/ui: Console-based user interface.
+Professional UI Formatting: Use of String.format for clean inventory lists and commercial-grade receipt generation.
