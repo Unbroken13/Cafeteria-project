@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.exception.ProductoNoEncontradoException;
+import org.example.exception.StockInsuficienteException;
 import org.example.model.*;
 import org.example.service.IPedidoService;
 import org.example.service.IProductoService;
@@ -57,24 +59,28 @@ public class Main {
                     int idProducto= 0;
 
                     do {
-                        System.out.println("\n--- Agregando productos al pedido ---");
-                        productoService.mostrarProductos(); // Mostramos para que el usuario vea los IDs
-                        System.out.print("Ingrese el ID del producto (o 0 para finalizar): ");
-                        idProducto = leer.nextInt();
+                        try {
+                            System.out.println("\n--- Agregando productos al pedido ---");
+                            productoService.mostrarProductos(); // Mostramos para que el usuario vea los IDs
+                            System.out.print("Ingrese el ID del producto (o 0 para finalizar): ");
+                            idProducto = leer.nextInt();
 
-                        if (idProducto != 0){
-                            Producto pEncontrado = productoService.buscarProductoPorId(idProducto);
-                            System.out.print("Ingrese la cantidad que desea llevar: ");
-                            int cantidad = leer.nextInt(); // <--- Aquí nace la variable 'cantidad'
-                            if (pEncontrado.getStock() >= cantidad){
-                                // Restamos del inventario
+                            if (idProducto != 0){
+                                Producto pEncontrado = productoService.buscarProductoPorId(idProducto);
+
+                                System.out.print("Ingrese la cantidad que desea llevar: ");
+
+                                int cantidad = leer.nextInt();
+
                                 nuevoPedido.agregarProductos(pEncontrado, cantidad);
                                 productoService.actualizarStock(idProducto, cantidad);
                                 System.out.println("Agregado con éxito.");
-                            } else {
-                                System.out.println("Error: No hay suficiente stock. Disponible: " + pEncontrado.getStock());
-                            }
 
+                            }
+                        } catch (ProductoNoEncontradoException | StockInsuficienteException e){
+                            System.out.println("[ERROR DE INVENTARIO] " + e.getMessage());
+                        } catch (Exception e){
+                            System.out.println("\n[ERROR INESPERADO] Ocurrió un problema: " + e.getMessage());
                         }
 
 
@@ -83,7 +89,7 @@ public class Main {
                     // 6. Al salir del bucle, guardamos el pedido
                     pedidoService.guardarPedido(nuevoPedido);
                     System.out.println("Pedido guardado con éxito.");
-                    System.out.println("");
+                    System.out.println(" ");
                     break;
 
                 case 3:
