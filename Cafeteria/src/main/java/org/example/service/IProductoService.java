@@ -1,5 +1,7 @@
 package org.example.service;
 
+import org.example.exception.ProductoNoEncontradoException;
+import org.example.exception.StockInsuficienteException;
 import org.example.model.Producto;
 
 public interface IProductoService {
@@ -10,9 +12,9 @@ public interface IProductoService {
 
     void mostrarProductos();
 
-    Producto buscarProductoPorId(int idBuscado);
+    Producto buscarProductoPorId(int idBuscado) throws ProductoNoEncontradoException;
 
-    void actualizarStock(int id, int cantidadDiferencial);
+    void actualizarStock(int id, int cantidadDiferencial) throws StockInsuficienteException;
 
     void eliminarProducto(int id);
 

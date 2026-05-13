@@ -1,5 +1,7 @@
 package org.example.service;
 
+import org.example.exception.ProductoNoEncontradoException;
+import org.example.exception.StockInsuficienteException;
 import org.example.model.Producto;
 
 import java.util.ArrayList;
@@ -48,9 +50,7 @@ public class ProductoServiceImpl implements IProductoService {
     }
 
     @Override
-    public Producto buscarProductoPorId(int idBuscado){
-
-
+    public Producto buscarProductoPorId(int idBuscado) throws ProductoNoEncontradoException {
         for(Producto p: productos){
 
             if (p.getId() == idBuscado ){
@@ -58,23 +58,23 @@ public class ProductoServiceImpl implements IProductoService {
             }
         }
 
-        return null;
+        throw new ProductoNoEncontradoException("El producto con ID " + idBuscado + " no existe en el catálogo.");
     }
 
     @Override
-    public void actualizarStock(int id, int cantidadDiferencial){
-        Producto p = buscarProductoPorId(id);
+    public void actualizarStock(int id, int cantidadDiferencial) throws ProductoNoEncontradoException, StockInsuficienteException {
+        Producto p = buscarProductoPorId(id); //buscarProductoPorId ya lanza ProductoNoEncontradoException, no es necesario validar si se encuentra el producto.
 
-        if(p != null){
-            int nuevoStock = p.getStock() + cantidadDiferencial;
-            if (nuevoStock >= 0){
-                p.setStock(nuevoStock);
-            } else {
-                System.out.println("Error:No hay suficiente stock");
-            }
-        } else {
-            System.out.println("Error: Producto no encontrado. No se puede actualizar stock.");
+        int nuevoStock = p.getStock() + cantidadDiferencial;
+
+        if (nuevoStock < 0){
+            throw new StockInsuficienteException("Error: No hay suficiente stock para " + p.getNombre() +
+                                                ". Disponible: " + p.getStock() +
+                                                ", Solicitado: " + Math.abs(cantidadDiferencial));
         }
+
+        p.setStock(nuevoStock);
+
     }
 
     @Override

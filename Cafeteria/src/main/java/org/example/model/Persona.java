@@ -20,7 +20,7 @@ public abstract class Persona {
         return dni;
     }
 
-    public String getnombre() {
+    public String getNombre() {
         return nombre;
     }
 
@@ -41,5 +41,11 @@ public abstract class Persona {
 
     public void setnombre(String celular) {
         this.nombre = celular;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Nombre: %-15s | DNI: %-10s | Mail: %-20s",
+                            nombre, dni, mail);
     }
 }
